@@ -53,4 +53,9 @@ public class CalculatorTest
 		assertEquals(1002, Calculator.add("1000,2"));
 		assertEquals(2000, Calculator.add("1001,1000,500,500"));
 	}
+	@Test
+    public void testDelimiterCustomAndNormal() {
+    	assertEquals(0, Calculator.add("//\n"));
+    	assertEquals(0, Calculator.add("//[+]"));
+    }
 }

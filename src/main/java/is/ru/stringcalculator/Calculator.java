@@ -5,14 +5,23 @@ import java.util.List;
 
 public class Calculator 
 {
-
-	public static int add(String text){
+	public static int add(String text)
+	{
 		if(containsNewLine(text)){
 			text = replaceNewLine(text);
 		}
 		if(text.equals(""))
 		{
 			return 0;
+		}
+		else if(checkDelim(text))
+		{
+			if(checkCustomDelim(text))
+			{
+				return 0;
+			}
+			else
+				return 0;
 		}
 		else if(text.contains(","))
 		{
@@ -62,4 +71,10 @@ public class Calculator
     	}
     	return errorMessage;
     }
+	private static boolean checkDelim(String text) {
+    	return (text.charAt(0) == '/' && text.charAt(1) == '/');
+    }
+	private static boolean checkCustomDelim(String text) {
+		return (text.charAt(0) == '/' && text.charAt(1) == '/' && text.charAt(2) == '[');
+	}
 }
