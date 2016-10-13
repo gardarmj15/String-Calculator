@@ -21,7 +21,7 @@ public class Calculator
 				return 0;
 			}
 			else
-				return 0;
+				return handleDelimiters(text);
 		}
 		else if(text.contains(","))
 		{
@@ -76,5 +76,10 @@ public class Calculator
     }
 	private static boolean checkCustomDelim(String text) {
 		return (text.charAt(0) == '/' && text.charAt(1) == '/' && text.charAt(2) == '[');
+	}
+	private static int handleDelimiters(String text){
+		String delimiter = String.valueOf(text.charAt(2));
+		text = text.substring(4, text.length());
+		return sum(text.split(delimiter));
 	}
 }
