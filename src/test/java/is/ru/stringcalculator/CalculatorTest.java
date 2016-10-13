@@ -54,5 +54,26 @@ public class CalculatorTest
 			assertEquals(error, ex.getMessage());
 		}
     }
+	@Test
+	public void TestMultipleNegativesError()
+	{
+	  try
+	  {
+		Calculator.add("2,-4,3,-5");
+	  }
+	  catch( final IllegalArgumentException ex )
+	  {
+	    final String msg = "Negatives not allowed: -4, -5";
+	    assertEquals(msg, ex.getMessage());
+	  }
+	}
 
+	@Test
+	public void testNumberSmallerThan1000(){
+		assertEquals(1002, Calculator.add("1000,2"));
+	}
+	@Test
+	public void testNumberLargerThan1000(){
+		assertEquals(2, Calculator.add("1001,2"));
+	}
 }
