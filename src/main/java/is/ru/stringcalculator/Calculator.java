@@ -8,7 +8,7 @@ public class Calculator {
 		}
 		else if(text.contains("-"))
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Negatives not allowed: -1");
 		}
 		else if(text.contains(",") || text.contains("\n")){
 			return sum(splitNumbers(text));

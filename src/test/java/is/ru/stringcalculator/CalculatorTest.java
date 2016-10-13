@@ -40,5 +40,17 @@ public class CalculatorTest {
     public void testNegativeNumbers(){
     	Calculator.add("1,-1");
     }
+	@Test
+    public void displayNegativeError(){
+    	try
+		{
+			Calculator.add("1,-1");
+		}
+		catch(final IllegalArgumentException exception)
+		{
+			final String error = "Negatives not allowed: -1";
+			assertEquals(error, exception.getMessage());
+		}
+    }
 
 }
