@@ -3,7 +3,8 @@ package is.ru.stringcalculator;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-public class CalculatorTest {
+public class CalculatorTest 
+{
 
 	public static void main(String args[]) {
       org.junit.runner.JUnitCore.main("is.ru.stringcalculator.CalculatorTest");
@@ -41,15 +42,16 @@ public class CalculatorTest {
     	Calculator.add("1,-1");
     }
 	@Test
-    public void displayNegativeError(){
+    public void displayNegativeError()
+	{
     	try
 		{
-			Calculator.add("1,-1");
+			Calculator.add("-1,2");
 		}
-		catch(final IllegalArgumentException exception)
+		catch( final IllegalArgumentException ex)
 		{
 			final String error = "Negatives not allowed: -1";
-			assertEquals(error, exception.getMessage());
+			assertEquals(error, ex.getMessage());
 		}
     }
 
