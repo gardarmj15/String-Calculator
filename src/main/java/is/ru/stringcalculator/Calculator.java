@@ -18,7 +18,7 @@ public class Calculator
 		{
 			if(checkCustomDelim(text))
 			{
-				return 0;
+				return handleCustomDelimiters(text);
 			}
 			else
 				return handleDelimiters(text);
@@ -81,5 +81,40 @@ public class Calculator
 		String delimiter = String.valueOf(text.charAt(2));
 		text = text.substring(4, text.length());
 		return sum(text.split(delimiter));
+	}
+	private static int handleCustomDelimiters(String text){
+		int delimBegin = 0;
+		int delimEnd = 0;
+		List<String> delimiters = new ArrayList<>();
+		int counter = 0;
+		
+		//take // out of the string
+		text = text.substring(2, text.length());
+		
+		for(int i = 0; i < text.length(); i++) {
+			if(text.charAt(i) == '[') {
+                delimBegin = i;
+            }
+			if(text.charAt(i) == ']') {
+                delimEnd = i;
+				
+				//Custom delimiter is now inside the [ ] brackets
+                String deliString = text.substring(delimBegin + 1, delimEnd);
+
+                //Adding the delimiter to the arraylist
+                delimiters.add(counter, deliString);
+				text = text.substring(i + 1, text.length());
+				String customDelimiter = delimiters.get(counter);
+				
+				//Change delimiter to comma
+				text = text.replace(customDelimiter, ",");
+				
+				i = 0;
+                counter++;
+			}
+		}
+		text = text.substring(1, text.length());
+		
+		return sum(splitNumbers(text));
 	}
 }

@@ -57,4 +57,9 @@ public class CalculatorTest
     public void testDelimiterNormal() {
     	assertEquals(9, Calculator.add("//;\n5;4"));
     }
+	@Test
+    public void testDelimiterOfAnyLength() {
+    	assertEquals(5, Calculator.add("//[***]\n1***2***2"));
+    	assertEquals(5, Calculator.add("//[xxxx]\n1xxxx2xxxx2"));
+	}
 }
